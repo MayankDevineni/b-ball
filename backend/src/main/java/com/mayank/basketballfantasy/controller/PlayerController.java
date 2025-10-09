@@ -15,13 +15,18 @@ public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
 
-  @GetMapping("/players")
+    @GetMapping("/players")
     public List<BasketballPlayer> getAllPlayers() {
         return playerRepository.findAll();
     }
-  @PostMapping("/players")
-      public BasketballPlayer createPlayer(@RequestBody BasketballPlayer player) {
-            return playerRepository.save(player);      
+
+    @PostMapping("/players")
+    public BasketballPlayer createPlayer(@RequestBody BasketballPlayer player) {
+        return playerRepository.save(player);      
     }
 
+    @GetMapping("/players/count")
+    public long getPlayerCount() {
+        return playerRepository.count();
+    }
 }
